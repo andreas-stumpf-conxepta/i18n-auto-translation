@@ -35,7 +35,9 @@ export class AzureOpenAiAPI extends Translate {
 
   protected callTranslateAPI = async (valuesForTranslation: string[]): Promise<string> => {
     if (!this.client) {
-      throw new Error('Azure OpenAI client is not initialized. Please provide the necessary parameters (endpoint, key, and deployment).');
+      throw new Error(
+        'Azure OpenAI client is not initialized. Please provide the necessary parameters (endpoint, key, and deployment).',
+      );
     }
 
     this.addToHistory(encode(valuesForTranslation.join(Translate.sentenceDelimiter)), 'user');
