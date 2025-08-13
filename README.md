@@ -84,13 +84,13 @@ This fork adds Azure OpenAI as a translation provider, leveraging Large Language
 ## Usage
 
 ```bash
-$ npx i18n-auto-translation -k SUBSCRIPTION_KEY -d PROJECT_DIR -t DESIRED_LANGUAGE
+$ npx @andreas-stumpf-conxepta/i18n-auto-translation -k SUBSCRIPTION_KEY -d PROJECT_DIR -t DESIRED_LANGUAGE
 ```
 
 ### Azure OpenAI Usage
 
 ```bash
-$ npx i18n-auto-translation \
+$ npx @andreas-stumpf-conxepta/i18n-auto-translation \
   --apiProvider azure-openai \
   --key YOUR_AZURE_OPENAI_KEY \
   --endpoint https://your-resource.openai.azure.com/ \
