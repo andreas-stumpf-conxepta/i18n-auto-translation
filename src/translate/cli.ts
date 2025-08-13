@@ -5,6 +5,8 @@ interface Arguments {
   apiProvider: string;
   key: string;
   region: string;
+  endpoint?: string;
+  deployment?: string;
   filePath?: string;
   dirPath?: string;
   from: string;
@@ -19,6 +21,9 @@ interface Arguments {
   delay: number;
   saveTo?: string;
   glossary?: string;
+  instruction?: string;
+  instructionPath?: string;
+  historySize: number;
 }
 
 export const argv: Arguments = yargs(process.argv.slice(2))
@@ -30,6 +35,7 @@ export const argv: Arguments = yargs(process.argv.slice(2))
       choices: [
         'google-official',
         'azure-official',
+        'azure-openai',
         'azure-rapid',
         'deep-rapid',
         'lecto-rapid',
@@ -51,6 +57,14 @@ export const argv: Arguments = yargs(process.argv.slice(2))
       alias: 'r',
       description: 'Key region. Used only by the Official Azure API.',
       default: 'global',
+    },
+    endpoint: {
+      type: 'string',
+      description: 'Endpoint address of an Azure OpenAI resource. Only used by the Azure OpenAI API.',
+    },
+    deployment: {
+      type: 'string',
+      description: 'Deployment name in Azure OpenAI. Only used by the Azure OpenAI API.',
     },
     filePath: {
       type: 'string',
@@ -134,5 +148,19 @@ export const argv: Arguments = yargs(process.argv.slice(2))
       alias: 'g',
       description: 'Specify the glossary to use for the translation. Used only by the DeepL API.',
     },
+    instruction: {
+      type: 'string',
+      description: 'Custom instruction message for the translation. Used only by the Azure OpenAI API.',
+    },
+    instructionPath: {
+      type: 'string',
+      description: 'Path to a file containing a custom instruction message for the translation. Used only by the Azure OpenAI API.',
+    },
+    historySize: {
+      type: 'number',
+      alias: 'h',
+      description: 'Size of the conversation history passed to the LLM. Used only by the Azure OpenAI API.',
+      default: 2,
+    }
   })
   .parseSync();

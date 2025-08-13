@@ -63,7 +63,7 @@ export abstract class Translate {
         this.saveTo = path.join(argv.saveTo, `${argv.to}.json`);
       } else {
         this.saveTo = path.join(
-          filePath.substring(0, filePath.lastIndexOf('/')),
+          filePath.replace(/[\\/][^\\/]*$/, ''),
           `${argv.to}.json`,
         );
       }

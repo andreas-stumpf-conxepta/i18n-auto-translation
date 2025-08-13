@@ -2,10 +2,10 @@
   "name": "i18n-auto-translation",
   "version": "2.2.1",
   "type": "module",
-  "description": "Auto translate i18n JSON file(s) to desired language(s).",
+  "description": "Auto translate i18n JSON file(s) to desired language(s). Extended with Azure OpenAI provider.",
   "main": "dist/src/index.js",
   "license": "MIT",
-  "homepage": "https://github.com/while1618/i18n-auto-translation",
+  "homepage": "https://github.com/andreas-stumpf-conxepta/i18n-auto-translation",
   "bin": "dist/src/index.js",
   "files": [
     "dist"
@@ -25,22 +25,25 @@
     "i18n",
     "auto translate",
     "translation",
-    "google translate"
+    "google translate",
+    "azure openai"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/while1618/i18n-auto-translation.git"
+    "url": "https://github.com/andreas-stumpf-conxepta/i18n-auto-translation.git"
   },
   "engines": {
     "node": ">= 14.17"
   },
   "dependencies": {
+    "@azure/openai": "^2.0.0",
     "@google-cloud/translate": "8.5.1",
     "axios": "1.8.4",
     "deep-object-diff": "1.1.9",
     "glob": "11.0.1",
     "html-entities": "2.6.0",
     "just-extend": "6.2.0",
+    "openai": "^5.12.2",
     "yargs": "17.7.2",
     "yocto-spinner": "0.2.1"
   },

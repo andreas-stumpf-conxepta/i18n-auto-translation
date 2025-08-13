@@ -1,4 +1,5 @@
 import { AzureOfficialAPI } from './providers/azure-official-api.js';
+import { AzureOpenAiAPI } from './providers/azure-openai-api.js';
 import { AzureRapidAPI } from './providers/azure-rapid-api.js';
 import { DeepRapidAPI } from './providers/deep-rapid-api.js';
 import { DeepLFreeAPI } from './providers/deepl-free-api.js';
@@ -13,6 +14,7 @@ interface Providers {
   'google-official': GoogleOfficialAPI;
   'azure-official': AzureOfficialAPI;
   'azure-rapid': AzureRapidAPI;
+  'azure-openai': AzureOpenAiAPI;
   'deep-rapid': DeepRapidAPI;
   'lecto-rapid': LectoRapidAPI;
   'lingvanex-rapid': LingvanexRapidAPI;
@@ -26,6 +28,7 @@ export class TranslateSupplier {
     'google-official': new GoogleOfficialAPI(),
     'azure-official': new AzureOfficialAPI(),
     'azure-rapid': new AzureRapidAPI(),
+    'azure-openai': new AzureOpenAiAPI(),
     'deep-rapid': new DeepRapidAPI(),
     'lecto-rapid': new LectoRapidAPI(),
     'lingvanex-rapid': new LingvanexRapidAPI(),
