@@ -6,24 +6,12 @@ import { Translate } from '../translate.js';
 import { ChatCompletionMessageParam } from 'openai/resources/chat/completions/completions.js';
 
 export class AzureOpenAiAPI extends Translate {
-  client: AzureOpenAI;
+  client: AzureOpenAI | undefined;
   history: ChatCompletionMessageParam[];
   customInstruction: string | undefined;
 
   constructor() {
     super();
-
-    if (!argv.endpoint) {
-      throw new Error('Endpoint is required for Azure OpenAI API.');
-    }
-
-    if (!argv.deployment) {
-      throw new Error('Deployment name is required for Azure OpenAI API.');
-    }
-
-    if (!argv.key) {
-      throw new Error('API key is required for Azure OpenAI API.');
-    }
 
     this.customInstruction = argv.instruction;
 
@@ -34,16 +22,22 @@ export class AzureOpenAiAPI extends Translate {
       this.customInstruction = fs.readFileSync(argv.instructionPath, 'utf-8');
     }
 
-    this.client = new AzureOpenAI({
-      endpoint: argv.endpoint!,
-      apiKey: argv.key!,
-      apiVersion: '2024-10-21',
-    });
+    if (!argv.deployment && !argv.endpoint && !argv.key) {
+      this.client = new AzureOpenAI({
+        endpoint: argv.endpoint,
+        apiKey: argv.key,
+        apiVersion: '2024-10-21',
+      });
+    }
 
     this.history = [];
   }
 
   protected callTranslateAPI = async (valuesForTranslation: string[]): Promise<string> => {
+    if (!this.client) {
+      throw new Error('Azure OpenAI client is not initialized. Please provide the necessary parameters (endpoint, key, and deployment).');
+    }
+
     this.addToHistory(encode(valuesForTranslation.join(Translate.sentenceDelimiter)), 'user');
 
     const response = await this.client.chat.completions.create({
