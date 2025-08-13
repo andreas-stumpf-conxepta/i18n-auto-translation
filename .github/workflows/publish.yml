@@ -42,3 +42,7 @@ jobs:
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
+        with:
+          skipIfReleaseExists: true
+          generateReleaseNotes: true
+          makeLatest: true
