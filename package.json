@@ -1,5 +1,5 @@
 {
-  "name": "@andreas-stumpf-conxepta/i18n-auto-translation",
+  "name": "i18n-auto-translation",
   "version": "3.0.0",
   "type": "module",
   "description": "Auto translate i18n JSON file(s) to desired language(s). Extended with Azure OpenAI provider.",
