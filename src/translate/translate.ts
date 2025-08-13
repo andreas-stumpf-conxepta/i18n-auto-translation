@@ -62,10 +62,7 @@ export abstract class Translate {
       if (argv.saveTo) {
         this.saveTo = path.join(argv.saveTo, `${argv.to}.json`);
       } else {
-        this.saveTo = path.join(
-          filePath.replace(/[\\/][^\\/]*$/, ''),
-          `${argv.to}.json`,
-        );
+        this.saveTo = path.join(filePath.replace(/[\\/][^\\/]*$/, ''), `${argv.to}.json`);
       }
       if (argv.override || !fs.existsSync(this.saveTo)) {
         await this.translationDoesNotExists();

@@ -60,7 +60,8 @@ export const argv: Arguments = yargs(process.argv.slice(2))
     },
     endpoint: {
       type: 'string',
-      description: 'Endpoint address of an Azure OpenAI resource. Only used by the Azure OpenAI API.',
+      description:
+        'Endpoint address of an Azure OpenAI resource. Only used by the Azure OpenAI API.',
     },
     deployment: {
       type: 'string',
@@ -150,17 +151,20 @@ export const argv: Arguments = yargs(process.argv.slice(2))
     },
     instruction: {
       type: 'string',
-      description: 'Custom instruction message for the translation. Used only by the Azure OpenAI API.',
+      description:
+        'Custom instruction message for the translation. Used only by the Azure OpenAI API.',
     },
     instructionPath: {
       type: 'string',
-      description: 'Path to a file containing a custom instruction message for the translation. Used only by the Azure OpenAI API.',
+      description:
+        'Path to a file containing a custom instruction message for the translation. Used only by the Azure OpenAI API.',
     },
     historySize: {
       type: 'number',
       alias: 'h',
-      description: 'Size of the conversation history passed to the LLM. Used only by the Azure OpenAI API.',
+      description:
+        'Size of the conversation history passed to the LLM. Used only by the Azure OpenAI API.',
       default: 2,
-    }
+    },
   })
   .parseSync();

@@ -13,10 +13,8 @@
   - In the search bar find "Cloud Translation API" and enable it.
   - Click on credentials -> Create credentials -> API key.
   - Copy the key and use it.
-  
 - **Azure**
   - Follow the instructions [here](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=nodejs#prerequisites).
-  
 - **Azure OpenAI** ⭐
   1. **Create Azure OpenAI Resource**:
      - Go to [Azure Portal](https://portal.azure.com/)
@@ -37,7 +35,6 @@
      --endpoint https://your-resource.openai.azure.com/ \
      --deployment your-deployment-name
      ```
-     
 - **RapidAPI**
   - For all RapidAPI providers, create an account [here](https://rapidapi.com/).
   - Go to desired API and switch to the pricing section. There you will find instructions on how to subscribe to the API.
@@ -50,14 +47,14 @@
   <a href="#translate-providers">Translate Providers</a> •
   <a href="#credits">Credits</a> •
   <a href="#license">License</a>
-</p>
+  </p>
 
 <p align="center">
   <a href="https://github.com/andreas-stumpf-conxepta/i18n-auto-translation/actions/workflows/build.yml" alt="Build">
     <img src="https://github.com/andreas-stumpf-conxepta/i18n-auto-translation/actions/workflows/build.yml/badge.svg" />
   </a>
   <a href="https://www.npmjs.com/package/i18n-auto-translation" alt="NPM Version">
-    <img src="https://img.shields.io/badge/npm-v2.2.1-blue" />
+    <img src="https://img.shields.io/badge/npm-v3.0.0-blue" />
   </a>
   <a href="LICENSE" alt="License">
     <img src="https://img.shields.io/github/license/andreas-stumpf-conxepta/i18n-auto-translation" />
@@ -110,34 +107,35 @@ $ npx i18n-auto-translation \
 | ----------------------------------------- | ----- | --------------------------------------------------------------------------------------------------------- | --------------- | ------------ |
 | --help                                    | /     | All available options.                                                                                    | /               | /            |
 | --version                                 | /     | Current version.                                                                                          | /               | /            |
-| --apiProvider                             | -a    | API Provider.                                                                                             | google-official | ✅            |
-| --key [required]                          | -k    | Subscription key for the API provider.                                                                    | /               | ✅            |
+| --apiProvider                             | -a    | API Provider.                                                                                             | google-official | ✅           |
+| --key [required]                          | -k    | Subscription key for the API provider.                                                                    | /               | ✅           |
 | --region                                  | -r    | Key region. Used only by the Official Azure API.                                                          | global          | /            |
-| --endpoint                                | /     | Azure OpenAI endpoint URL. **Required for azure-openai provider.**                                       | /               | ✅            |
-| --deployment                              | /     | Azure OpenAI deployment name. **Required for azure-openai provider.**                                    | /               | ✅            |
-| --filePath [filePath or dirPath required] | -p    | Path to a single JSON file.                                                                               | /               | ✅            |
-| --dirPath [filePath or dirPath required]  | -d    | Path to a directory in which you will recursively find all JSON files named [from].json (e.g. en.json)    | /               | ✅            |
-| --from                                    | -f    | From which language you want to translate.                                                                | en              | ✅            |
-| --to [required]                           | -t    | To which language you want to translate.                                                                  | /               | ✅            |
-| --override                                | -o    | Override existing translation(s).                                                                         | false           | ✅            |
+| --endpoint                                | /     | Azure OpenAI endpoint URL. **Required for azure-openai provider.**                                        | /               | ✅           |
+| --deployment                              | /     | Azure OpenAI deployment name. **Required for azure-openai provider.**                                     | /               | ✅           |
+| --filePath [filePath or dirPath required] | -p    | Path to a single JSON file.                                                                               | /               | ✅           |
+| --dirPath [filePath or dirPath required]  | -d    | Path to a directory in which you will recursively find all JSON files named [from].json (e.g. en.json)    | /               | ✅           |
+| --from                                    | -f    | From which language you want to translate.                                                                | en              | ✅           |
+| --to [required]                           | -t    | To which language you want to translate.                                                                  | /               | ✅           |
+| --override                                | -o    | Override existing translation(s).                                                                         | false           | ✅           |
 | --certificatePath                         | -c    | Path to a custom certificate.                                                                             | /               | /            |
-| --spaces                                  | -s    | Number of spaces to use when generating output JSON files.                                                | 2               | ✅            |
-| --maxLinesPerRequest                      | -l    | Maximum number of lines per request. For every `x` number of lines, separated request is sent to the api. | 50              | ✅            |
+| --spaces                                  | -s    | Number of spaces to use when generating output JSON files.                                                | 2               | ✅           |
+| --maxLinesPerRequest                      | -l    | Maximum number of lines per request. For every `x` number of lines, separated request is sent to the api. | 50              | ✅           |
 | --context                                 | -x    | Context for the translation. Used only by the DeepL API.                                                  | /               | /            |
 | --formality                               | -m    | Formality for the translation. Used only by the DeepL API.                                                | default         | /            |
-| --trim                                    | -i    | Trim string after translation.                                                                            | true            | ✅            |
-| --delay                                   | -e    | Delay between every request made to the translate api.                                                    | 250             | ✅            |
-| --saveTo                                  | -v    | Override where translated file should be saved. (use only with `--filePath` option)                       | /               | ✅            |
+| --trim                                    | -i    | Trim string after translation.                                                                            | true            | ✅           |
+| --delay                                   | -e    | Delay between every request made to the translate api.                                                    | 250             | ✅           |
+| --saveTo                                  | -v    | Override where translated file should be saved. (use only with `--filePath` option)                       | /               | ✅           |
 | --glossary                                | -g    | Specify the glossary to use for the translation. Used only by the DeepL API.                              | /               | /            |
-| --instruction                             | /     | Custom instruction message for enhanced translation context. **Azure OpenAI only.**                       | /               | ✅            |
-| --instructionPath                         | /     | Path to file containing custom instruction message. **Azure OpenAI only.**                                | /               | ✅            |
-| --historySize                            | -h    | Size of conversation history passed to LLM for context. **Azure OpenAI only.**                            | 2               | ✅            |
+| --instruction                             | /     | Custom instruction message for enhanced translation context. **Azure OpenAI only.**                       | /               | ✅           |
+| --instructionPath                         | /     | Path to file containing custom instruction message. **Azure OpenAI only.**                                | /               | ✅           |
+| --historySize                             | -h    | Size of conversation history passed to LLM for context. **Azure OpenAI only.**                            | 2               | ✅           |
 
 ## Azure OpenAI Features
 
 This fork introduces Azure OpenAI as a translation provider, offering several advantages over traditional translation APIs:
 
 ### 🚀 Enhanced Translation Quality
+
 - **Context-Aware Translations**: Leverages Large Language Models for better understanding of context and nuances
 - **Custom Instructions**: Provide specific guidance for translation style, formality, or domain expertise
 - **Conversation History**: Maintains context across multiple translation requests for consistency
@@ -145,6 +143,7 @@ This fork introduces Azure OpenAI as a translation provider, offering several ad
 ### 🎯 Advanced Configuration Options
 
 #### Custom Instructions
+
 Provide specific translation guidelines:
 
 ```bash
@@ -154,6 +153,7 @@ Provide specific translation guidelines:
 ```
 
 #### Instruction Files
+
 Store complex instructions in files:
 
 ```bash
@@ -161,6 +161,7 @@ Store complex instructions in files:
 ```
 
 Example instruction file content:
+
 ```text
 Translate to German using:
 - Formal language (Sie instead of du)
@@ -170,6 +171,7 @@ Translate to German using:
 ```
 
 #### Conversation History
+
 Control how much context the AI remembers:
 
 ```bash
@@ -206,17 +208,17 @@ In my testing, only google had this problem, but you can try the same approach i
 
 ## Translate Providers
 
-| Provider                                                                                                                          | CLI usage              | Features                    |
-| --------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------------- |
-| [Google Translate Official](https://cloud.google.com/translate/)                                                                  | google-official        | Fast, reliable              |
-| [Azure Translator Official](https://azure.microsoft.com/en-us/services/cognitive-services/translator/)                            | azure-official         | Enterprise-grade            |
-| **[Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service/) (New!)** | **azure-openai**       | **🤖 AI-powered, contextual** |
-| [Azure Translator RapidAPI](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/microsoft-translator-text/) | azure-rapid            | API marketplace             |
-| [Deep Translate RapidAPI](https://rapidapi.com/gatzuma/api/deep-translate1/)                                                      | deep-rapid             | Simple integration          |
-| [Lecto Translation RapidAPI](https://rapidapi.com/lecto-lecto-default/api/lecto-translation/)                                     | lecto-rapid            | Multiple languages          |
-| [Lingvanex Translate RapidAPI](https://rapidapi.com/Lingvanex/api/lingvanex-translate/)                                           | lingvanex-rapid        | Wide language support       |
-| [NLP Translation RapidAPI](https://rapidapi.com/gofitech/api/nlp-translation/)                                                    | nlp-rapid              | NLP-focused                 |
-| [Deepl](https://www.deepl.com/pro-api?cta=header-pro-api)                                                                         | deepl-pro / deepl-free | High quality translations   |
+| Provider                                                                                                                          | CLI usage              | Features                      |
+| --------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------------------- |
+| [Google Translate Official](https://cloud.google.com/translate/)                                                                  | google-official        | Fast, reliable                |
+| [Azure Translator Official](https://azure.microsoft.com/en-us/services/cognitive-services/translator/)                            | azure-official         | Enterprise-grade              |
+| **[Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service/) (New!)**                                 | **azure-openai**       | **🤖 AI-powered, contextual** |
+| [Azure Translator RapidAPI](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/microsoft-translator-text/) | azure-rapid            | API marketplace               |
+| [Deep Translate RapidAPI](https://rapidapi.com/gatzuma/api/deep-translate1/)                                                      | deep-rapid             | Simple integration            |
+| [Lecto Translation RapidAPI](https://rapidapi.com/lecto-lecto-default/api/lecto-translation/)                                     | lecto-rapid            | Multiple languages            |
+| [Lingvanex Translate RapidAPI](https://rapidapi.com/Lingvanex/api/lingvanex-translate/)                                           | lingvanex-rapid        | Wide language support         |
+| [NLP Translation RapidAPI](https://rapidapi.com/gofitech/api/nlp-translation/)                                                    | nlp-rapid              | NLP-focused                   |
+| [Deepl](https://www.deepl.com/pro-api?cta=header-pro-api)                                                                         | deepl-pro / deepl-free | High quality translations     |
 
 ### Obtaining keys
 
