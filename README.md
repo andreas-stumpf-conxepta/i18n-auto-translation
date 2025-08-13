@@ -53,7 +53,7 @@
   <a href="https://github.com/andreas-stumpf-conxepta/i18n-auto-translation/actions/workflows/build.yml" alt="Build">
     <img src="https://github.com/andreas-stumpf-conxepta/i18n-auto-translation/actions/workflows/build.yml/badge.svg" />
   </a>
-  <a href="https://www.npmjs.com/package/i18n-auto-translation" alt="NPM Version">
+  <a href="https://www.npmjs.com/package/@andreas.stumpf/i18n-auto-translation" alt="NPM Version">
     <img src="https://img.shields.io/badge/npm-v3.0.0-blue" />
   </a>
   <a href="LICENSE" alt="License">
@@ -84,13 +84,13 @@ This fork adds Azure OpenAI as a translation provider, leveraging Large Language
 ## Usage
 
 ```bash
-$ npx @andreas-stumpf-conxepta/i18n-auto-translation -k SUBSCRIPTION_KEY -d PROJECT_DIR -t DESIRED_LANGUAGE
+$ npx @andreas.stumpf/i18n-auto-translation -k SUBSCRIPTION_KEY -d PROJECT_DIR -t DESIRED_LANGUAGE
 ```
 
 ### Azure OpenAI Usage
 
 ```bash
-$ npx @andreas-stumpf-conxepta/i18n-auto-translation \
+$ npx @andreas.stumpf/i18n-auto-translation \
   --apiProvider azure-openai \
   --key YOUR_AZURE_OPENAI_KEY \
   --endpoint https://your-resource.openai.azure.com/ \

@@ -1,12 +1,14 @@
 {
-  "name": "@andreas-stumpf-conxepta/i18n-auto-translation",
+  "name": "@andreas.stumpf/i18n-auto-translation",
   "version": "3.0.0",
   "type": "module",
   "description": "Auto translate i18n JSON file(s) to desired language(s). Extended with Azure OpenAI provider.",
   "main": "dist/src/index.js",
   "license": "MIT",
   "homepage": "https://github.com/andreas-stumpf-conxepta/i18n-auto-translation",
-  "bin": "dist/src/index.js",
+  "bin": {
+    "i18n-auto-translation": "dist/src/index.js"
+  },
   "files": [
     "dist"
   ],
@@ -30,7 +32,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/andreas-stumpf-conxepta/i18n-auto-translation.git"
+    "url": "git+https://github.com/andreas-stumpf-conxepta/i18n-auto-translation.git"
   },
   "engines": {
     "node": ">= 14.17"
