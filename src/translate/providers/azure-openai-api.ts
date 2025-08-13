@@ -22,7 +22,7 @@ export class AzureOpenAiAPI extends Translate {
       this.customInstruction = fs.readFileSync(argv.instructionPath, 'utf-8');
     }
 
-    if (!argv.deployment && !argv.endpoint && !argv.key) {
+    if (argv.deployment && argv.endpoint && argv.key) {
       this.client = new AzureOpenAI({
         endpoint: argv.endpoint,
         apiKey: argv.key,
