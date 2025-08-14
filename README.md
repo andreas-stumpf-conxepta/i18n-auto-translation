@@ -5,61 +5,6 @@
 </h1>
 
 <h4 align="center">Auto translate i18n JSON file(s) to desired language(s). Extended with Azure OpenAI provider.</h4>
-
-### Obtaining keys
-
-- **Google**
-  - Goto https://console.cloud.google.com/ and create a new project.
-  - In the search bar find "Cloud Translation API" and enable it.
-  - Click on credentials -> Create credentials -> API key.
-  - Copy the key and use it.
-- **Azure**
-  - Follow the instructions [here](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=nodejs#prerequisites).
-- **Azure OpenAI** ⭐
-  1. **Create Azure OpenAI Resource**:
-     - Go to [Azure Portal](https://portal.azure.com/)
-     - Create a new "Azure OpenAI" resource
-     - Choose your subscription, resource group, and region
-  2. **Deploy a Model**:
-     - Navigate to Azure OpenAI Studio
-     - Go to "Deployments" and create a new deployment
-     - Choose a model (e.g., `gpt-4`, `gpt-35-turbo`)
-     - Note your deployment name
-  3. **Get Credentials**:
-     - In Azure Portal, go to your OpenAI resource
-     - Copy the **Endpoint** and **API Key** from "Keys and Endpoint"
-  4. **Usage**:
-     ```bash
-     --apiProvider azure-openai \
-     --key YOUR_API_KEY \
-     --endpoint https://your-resource.openai.azure.com/ \
-     --deployment your-deployment-name
-     ```
-- **RapidAPI**
-  - For all RapidAPI providers, create an account [here](https://rapidapi.com/).
-  - Go to desired API and switch to the pricing section. There you will find instructions on how to subscribe to the API.
-  - Now you can use your key provided from RapidAPI.="center">
-  <a href="#description">Description</a> •
-  <a href="#usage">Usage</a> •
-  <a href="#azure-openai-features">Azure OpenAI Features</a> •
-  <a href="#demo">Demo</a> •
-  <a href="#known-issue">Known issue</a> •
-  <a href="#translate-providers">Translate Providers</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#license">License</a>
-  </p>
-
-<p align="center">
-  <a href="https://github.com/andreas-stumpf-conxepta/i18n-auto-translation/actions/workflows/build.yml" alt="Build">
-    <img src="https://github.com/andreas-stumpf-conxepta/i18n-auto-translation/actions/workflows/build.yml/badge.svg" />
-  </a>
-  <a href="https://www.npmjs.com/package/@andreas.stumpf/i18n-auto-translation" alt="NPM Version">
-    <img src="https://img.shields.io/badge/npm-v3.0.0-blue" />
-  </a>
-  <a href="LICENSE" alt="License">
-    <img src="https://img.shields.io/github/license/andreas-stumpf-conxepta/i18n-auto-translation" />
-  </a>
-</p>
   
 ## Description
 
@@ -128,7 +73,7 @@ $ npx @andreas.stumpf/i18n-auto-translation \
 | --glossary                                | -g    | Specify the glossary to use for the translation. Used only by the DeepL API.                              | /               | /            |
 | --instruction                             | /     | Custom instruction message for enhanced translation context. **Azure OpenAI only.**                       | /               | ✅           |
 | --instructionPath                         | /     | Path to file containing custom instruction message. **Azure OpenAI only.**                                | /               | ✅           |
-| --historySize                             | -h    | Size of conversation history passed to LLM for context. **Azure OpenAI only.**                            | 50              | ✅           |
+| --historySize                             | -h    | Size of conversation history passed to LLM for context. **Azure OpenAI only.** 👉 Less is better against hallucination  | 6              | ✅           |
 
 ## Azure OpenAI Features
 
@@ -175,7 +120,7 @@ Translate to German using:
 Control how much context the AI remembers:
 
 ```bash
---historySize 100  # Remember last 100 translation exchanges for better consistency
+--historySize 10  # Remember last 10 translation exchanges for better consistency
 ```
 
 ### 🔧 Setup Requirements
@@ -198,13 +143,11 @@ https://user-images.githubusercontent.com/49982438/158603886-23c9978b-56e0-4f50-
 
 ## Known issue
 
-In some cases, you might face problem with google translate api. When you try to translate a lot of text, the response might be wrong, and it will change the structure of the translated json file.
+See Known issue on original project.
 
-Two issues were opened related to this problem, you can read more about it here. [#12](https://github.com/while1618/i18n-auto-translation/issues/12) [#46](https://github.com/while1618/i18n-auto-translation/issues/46)
+The Azure OpenAI provider can only request translations one by one to avoid inconsistent output by OpenAI.
 
-If you face this problem, try to change `maxLinesPerRequest`. The default value is `50`, and that means if your file is larger than 50 lines, multiple request will be sent to the api. For every 50 lines, one request will be sent. Try to reduce this number in order to fix the issue.
-
-In my testing, only google had this problem, but you can try the same approach if it happens with other provides. Feel free to open the issue if you have any problems.
+The Azure OpenAI translation works better with a small `historySize`. Otherwise, hallucinations might destroy HTML tags or params.
 
 ## Translate Providers
 
@@ -212,7 +155,7 @@ In my testing, only google had this problem, but you can try the same approach i
 | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------------------------- |
 | [Google Translate Official](https://cloud.google.com/translate/)                                                                  | google-official        | Fast, reliable                |
 | [Azure Translator Official](https://azure.microsoft.com/en-us/services/cognitive-services/translator/)                            | azure-official         | Enterprise-grade              |
-| **[Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service/) (New!)**                                 | **azure-openai**       | **🤖 AI-powered, contextual** |
+| **[Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service/) (New!)**                                 | **azure-openai**       | **AI-powered, contextual 🤖** |
 | [Azure Translator RapidAPI](https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/microsoft-translator-text/) | azure-rapid            | API marketplace               |
 | [Deep Translate RapidAPI](https://rapidapi.com/gatzuma/api/deep-translate1/)                                                      | deep-rapid             | Simple integration            |
 | [Lecto Translation RapidAPI](https://rapidapi.com/lecto-lecto-default/api/lecto-translation/)                                     | lecto-rapid            | Multiple languages            |
