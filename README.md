@@ -48,32 +48,32 @@ $ npx @andreas.stumpf/i18n-auto-translation \
 
 ### Options
 
-| Key                                       | Alias | Description                                                                                               | Default         | Azure OpenAI |
-| ----------------------------------------- | ----- | --------------------------------------------------------------------------------------------------------- | --------------- | ------------ |
-| --help                                    | /     | All available options.                                                                                    | /               | /            |
-| --version                                 | /     | Current version.                                                                                          | /               | /            |
-| --apiProvider                             | -a    | API Provider.                                                                                             | google-official | ✅           |
-| --key [required]                          | -k    | Subscription key for the API provider.                                                                    | /               | ✅           |
-| --region                                  | -r    | Key region. Used only by the Official Azure API.                                                          | global          | /            |
-| --endpoint                                | /     | Azure OpenAI endpoint URL. **Required for azure-openai provider.**                                        | /               | ✅           |
-| --deployment                              | /     | Azure OpenAI deployment name. **Required for azure-openai provider.**                                     | /               | ✅           |
-| --filePath [filePath or dirPath required] | -p    | Path to a single JSON file.                                                                               | /               | ✅           |
-| --dirPath [filePath or dirPath required]  | -d    | Path to a directory in which you will recursively find all JSON files named [from].json (e.g. en.json)    | /               | ✅           |
-| --from                                    | -f    | From which language you want to translate.                                                                | en              | ✅           |
-| --to [required]                           | -t    | To which language you want to translate.                                                                  | /               | ✅           |
-| --override                                | -o    | Override existing translation(s).                                                                         | false           | ✅           |
-| --certificatePath                         | -c    | Path to a custom certificate.                                                                             | /               | /            |
-| --spaces                                  | -s    | Number of spaces to use when generating output JSON files.                                                | 2               | ✅           |
-| --maxLinesPerRequest                      | -l    | Maximum number of lines per request. For every `x` number of lines, separated request is sent to the api. | 50              | ✅           |
-| --context                                 | -x    | Context for the translation. Used only by the DeepL API.                                                  | /               | /            |
-| --formality                               | -m    | Formality for the translation. Used only by the DeepL API.                                                | default         | /            |
-| --trim                                    | -i    | Trim string after translation.                                                                            | true            | ✅           |
-| --delay                                   | -e    | Delay between every request made to the translate api.                                                    | 250             | ✅           |
-| --saveTo                                  | -v    | Override where translated file should be saved. (use only with `--filePath` option)                       | /               | ✅           |
-| --glossary                                | -g    | Specify the glossary to use for the translation. Used only by the DeepL API.                              | /               | /            |
-| --instruction                             | /     | Custom instruction message for enhanced translation context. **Azure OpenAI only.**                       | /               | ✅           |
-| --instructionPath                         | /     | Path to file containing custom instruction message. **Azure OpenAI only.**                                | /               | ✅           |
-| --historySize                             | -h    | Size of conversation history passed to LLM for context. **Azure OpenAI only.** 👉 Less is better against hallucination  | 6              | ✅           |
+| Key                                       | Alias | Description                                                                                                            | Default         | Azure OpenAI |
+| ----------------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------- | --------------- | ------------ |
+| --help                                    | /     | All available options.                                                                                                 | /               | /            |
+| --version                                 | /     | Current version.                                                                                                       | /               | /            |
+| --apiProvider                             | -a    | API Provider.                                                                                                          | google-official | ✅           |
+| --key [required]                          | -k    | Subscription key for the API provider.                                                                                 | /               | ✅           |
+| --region                                  | -r    | Key region. Used only by the Official Azure API.                                                                       | global          | /            |
+| --endpoint                                | /     | Azure OpenAI endpoint URL. **Required for azure-openai provider.**                                                     | /               | ✅           |
+| --deployment                              | /     | Azure OpenAI deployment name. **Required for azure-openai provider.**                                                  | /               | ✅           |
+| --filePath [filePath or dirPath required] | -p    | Path to a single JSON file.                                                                                            | /               | ✅           |
+| --dirPath [filePath or dirPath required]  | -d    | Path to a directory in which you will recursively find all JSON files named [from].json (e.g. en.json)                 | /               | ✅           |
+| --from                                    | -f    | From which language you want to translate.                                                                             | en              | ✅           |
+| --to [required]                           | -t    | To which language you want to translate.                                                                               | /               | ✅           |
+| --override                                | -o    | Override existing translation(s).                                                                                      | false           | ✅           |
+| --certificatePath                         | -c    | Path to a custom certificate.                                                                                          | /               | /            |
+| --spaces                                  | -s    | Number of spaces to use when generating output JSON files.                                                             | 2               | ✅           |
+| --maxLinesPerRequest                      | -l    | Maximum number of lines per request. For every `x` number of lines, separated request is sent to the api.              | 50              | ✅           |
+| --context                                 | -x    | Context for the translation. Used only by the DeepL API.                                                               | /               | /            |
+| --formality                               | -m    | Formality for the translation. Used only by the DeepL API.                                                             | default         | /            |
+| --trim                                    | -i    | Trim string after translation.                                                                                         | true            | ✅           |
+| --delay                                   | -e    | Delay between every request made to the translate api.                                                                 | 250             | ✅           |
+| --saveTo                                  | -v    | Override where translated file should be saved. (use only with `--filePath` option)                                    | /               | ✅           |
+| --glossary                                | -g    | Specify the glossary to use for the translation. Used only by the DeepL API.                                           | /               | /            |
+| --instruction                             | /     | Custom instruction message for enhanced translation context. **Azure OpenAI only.**                                    | /               | ✅           |
+| --instructionPath                         | /     | Path to file containing custom instruction message. **Azure OpenAI only.**                                             | /               | ✅           |
+| --historySize                             | -h    | Size of conversation history passed to LLM for context. **Azure OpenAI only.** 👉 Less is better against hallucination | 6               | ✅           |
 
 ## Azure OpenAI Features
 
