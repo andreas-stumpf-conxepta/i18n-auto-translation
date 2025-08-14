@@ -128,7 +128,7 @@ $ npx @andreas.stumpf/i18n-auto-translation \
 | --glossary                                | -g    | Specify the glossary to use for the translation. Used only by the DeepL API.                              | /               | /            |
 | --instruction                             | /     | Custom instruction message for enhanced translation context. **Azure OpenAI only.**                       | /               | ✅           |
 | --instructionPath                         | /     | Path to file containing custom instruction message. **Azure OpenAI only.**                                | /               | ✅           |
-| --historySize                             | -h    | Size of conversation history passed to LLM for context. **Azure OpenAI only.**                            | 2               | ✅           |
+| --historySize                             | -h    | Size of conversation history passed to LLM for context. **Azure OpenAI only.**                            | 50              | ✅           |
 
 ## Azure OpenAI Features
 
@@ -175,7 +175,7 @@ Translate to German using:
 Control how much context the AI remembers:
 
 ```bash
---historySize 4  # Remember last 4 translation exchanges for better consistency
+--historySize 100  # Remember last 100 translation exchanges for better consistency
 ```
 
 ### 🔧 Setup Requirements

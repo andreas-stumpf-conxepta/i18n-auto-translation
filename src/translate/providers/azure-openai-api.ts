@@ -40,23 +40,28 @@ export class AzureOpenAiAPI extends Translate {
       );
     }
 
-    this.addToHistory(encode(valuesForTranslation.join(Translate.sentenceDelimiter)), 'user');
+    // Batch processing is quite dangerous with Azure OpenAI, so we should send each value separately.
+    const translations: string[] = [];
+    for (const value of valuesForTranslation) {
+      this.addToHistory(encode(value), 'user');
 
-    const response = await this.client.chat.completions.create({
-      model: argv.deployment!,
-      messages: [
-        {
-          role: 'system',
-          content: this.getInstruction(),
-        },
-        ...this.history,
-      ],
-    });
+      const response = await this.client.chat.completions.create({
+        model: argv.deployment!,
+        messages: [
+          {
+            role: 'system',
+            content: this.getInstruction(),
+          },
+          ...this.history,
+        ],
+      });
 
-    const translatedContent = response.choices[0].message.content;
-    this.addToHistory(translatedContent ?? '', 'assistant');
+      const translation = response.choices[0].message.content?.trim() ?? '';
+      this.addToHistory(translation, 'assistant');
+      translations.push(decode(translation));
+    }
 
-    return decode(translatedContent);
+    return translations.join(Translate.sentenceDelimiter);
   };
 
   protected addToHistory = (message: string, role: 'user' | 'assistant'): void => {
@@ -73,10 +78,11 @@ export class AzureOpenAiAPI extends Translate {
   protected getInstruction = (): string => {
     return (
       `You are a professional translator.\n\n` +
-      `Translate each item separated by ${Translate.sentenceDelimiter} from ${argv.from} to ${argv.to}.\n\n` +
-      `Return translations in the same text formatting.\n\n` +
-      `Maintain case sensitivity and whitespacing.\n\n` +
-      `Output only the translations.\n\n` +
+      `Translate the following text from ${argv.from} to ${argv.to}.\n\n` +
+      `Preserve the original HTML structure exactly as it is. Do not modify, remove, or add any HTML tags.\n\n` +
+      `Do not translate or alter any placeholders or parameters enclosed in curly braces (e.g., {param}). Leave them unchanged in the output.\n\n` +
+      `Return the translation with the same text formatting and case sensitivity.\n\n` +
+      `Output only the translated text.\n\n` +
       `${this.customInstruction ? this.customInstruction : ''}`
     );
   };

@@ -164,7 +164,7 @@ export const argv: Arguments = yargs(process.argv.slice(2))
       alias: 'h',
       description:
         'Size of the conversation history passed to the LLM. Used only by the Azure OpenAI API.',
-      default: 2,
+      default: 50,
     },
   })
   .parseSync();
